@@ -36,7 +36,7 @@ To be honest we got carried away slightly while trying to press all these cool f
 
 Definitely, the Markdown sources are available here:
 
-**[https://github.com/goetzrieger/ansible-labs-summit2020/tree/master/content/ansible-tower-advanced](https://github.com/goetzrieger/ansible-labs-summit2020/tree/master/content/ansible-tower-advanced)**
+**[https://github.com/lj020326/ansible-labs/tree/master/content/ansible-tower-advanced](https://github.com/lj020326/ansible-labs/tree/master/content/ansible-tower-advanced)**
 
 ## Your Ansible Tower Lab Environment
 

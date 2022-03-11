@@ -26,7 +26,7 @@ First you need a source. In **real life** this would be your cloud provider, you
 Use curl to query your external inventory source:
 
 ```bash
-[{{< param "control_prompt" >}} ~]$ curl https://raw.githubusercontent.com/goetzrieger/ansible-labs-playbooks/master/inventory_list
+[{{< param "control_prompt" >}} ~]$ curl https://raw.githubusercontent.com/lj020326/ansible-labs-playbooks/master/inventory_list
 {
     "dyngroup":{
         "hosts":[
@@ -66,7 +66,7 @@ As looping over all hosts and calling the script with **--host** can be pretty s
 #!/bin/bash
 
 if [ "$1" == "--list" ] ; then
-    curl https://raw.githubusercontent.com/goetzrieger/ansible-labs-playbooks/master/inventory_list
+    curl https://raw.githubusercontent.com/lj020326/ansible-labs-playbooks/master/inventory_list
 elif [ "$1" == "--host" ]; then
     echo '{"_meta": {"hostvars": {}}}'
 else

@@ -103,7 +103,7 @@ The Ansible content used in this lab is hosted on Github. The next step is to ad
 
     awx -f human project create --name="Apache" \
         --scm_type=git \
-        --scm_url="https://github.com/goetzrieger/ansible-labs-playbooks.git" \
+        --scm_url="https://github.com/lj020326/ansible-labs-playbooks.git" \
         --organization "Default" \
         --scm_clean=true --scm_delete_on_update=true --scm_update_on_launch=true \
         --wait
@@ -156,7 +156,7 @@ The final script is also shown here:
         --inputs '{"username": "ec2-user", "ssh_key_data": "@~/.ssh/aws-private.pem"}'
     awx -f human project create --name="Apache" \
         --scm_type=git \
-        --scm_url="https://github.com/goetzrieger/ansible-labs-playbooks.git" \
+        --scm_url="https://github.com/lj020326/ansible-labs-playbooks.git" \
         --organization "Default" \
         --scm_clean=true --scm_delete_on_update=true --scm_update_on_launch=true \
         --wait
