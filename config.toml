@@ -1,6 +1,7 @@
 #baseurl = "https://people.redhat.com/grieger/summit2020_labs/"
 # baseurl = "https://lj020326.github.io/"
-baseurl = "https://lj020326.github.io/"
+# baseurl = "https://lj020326.github.io/"
+baseurl = "https://lj020326.github.io/ansible-labs/"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
