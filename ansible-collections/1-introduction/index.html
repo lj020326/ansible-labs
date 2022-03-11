@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="description" content="Ansible and Ansible Tower Labs">
+<meta name="author" content="Christian, Eric, Götz, Ismail, Joachim">
+
+    <link rel="icon" href="https://lj020326.github.io/images/favicon.png" type="image/png">
+
+    <title>Introduction :: Ansible Labs for AnsibleFest</title>
+
+    
+    <link href="https://lj020326.github.io/css/nucleus.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/fontawesome-all.min.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/hybrid.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/featherlight.min.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/perfect-scrollbar.min.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/auto-complete.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/atom-one-dark-reasonable.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/theme.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/tabs.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/hugo-theme.css?1647023136" rel="stylesheet">
+    
+    <link href="https://lj020326.github.io/css/theme-red.css?1647023136" rel="stylesheet">
+    
+    
+
+    <script src="https://lj020326.github.io/js/jquery-3.3.1.min.js?1647023136"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="https://lj020326.github.io/ansible-collections/1-introduction/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://lj020326.github.io/">
+  <img src="https://lj020326.github.io/images/email_ansiblefest-2020.png">
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="https://lj020326.github.io/js/lunr.min.js?1647023136"></script>
+<script type="text/javascript" src="https://lj020326.github.io/js/auto-complete.js?1647023136"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/lj020326.github.io\/";
+    
+</script>
+<script type="text/javascript" src="https://lj020326.github.io/js/search.js?1647023136"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='https://lj020326.github.io/'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/" title="Ansible Getting Started" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/">
+          Ansible Getting Started
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/1-setup/" title="Check the Prerequisites" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/1-setup/">
+          Check the Prerequisites
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/2-adhoc/" title="Running ad hoc commands" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/2-adhoc/">
+          Running ad hoc commands
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/3-playbook/" title="Writing Your First Playbook" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/3-playbook/">
+          Writing Your First Playbook
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/4-variables/" title="Using Variables" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/4-variables/">
+          Using Variables
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/5-handlers/" title="Conditionals, Handlers and Loops" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/5-handlers/">
+          Conditionals, Handlers and Loops
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/6-templates/" title="Templates" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/6-templates/">
+          Templates
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/7-bonus/" title="Bonus Labs" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/7-bonus/">
+          Bonus Labs
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/" title="Ansible Tower Getting Started" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/">
+          Ansible Tower Getting Started
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/1-intro/" title="Introduction to Tower" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/1-intro/">
+          Introduction to Tower
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/2-cred/" title="Inventories, credentials and ad hoc commands" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/2-cred/">
+          Inventories, credentials and ad hoc commands
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/3-projects/" title="Projects &amp; job templates" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/3-projects/">
+          Projects &amp; job templates
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/4-surveys/" title="Surveys" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/4-surveys/">
+          Surveys
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/5-rbac/" title="Role-based access control" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/5-rbac/">
+          Role-based access control
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/6-workflows/" title="Workflows" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/6-workflows/">
+          Workflows
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/7-wrap/" title="Wrap up" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/7-wrap/">
+          Wrap up
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/" title="Ansible Tower Advanced" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/">
+          Ansible Tower Advanced
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/1-intro/" title="Ansible Tower Advanced" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/1-intro/">
+          Ansible Tower Advanced
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/2-clustering/" title="Introduction to Ansible Tower Clustering" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/2-clustering/">
+          Introduction to Ansible Tower Clustering
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/3-awx-cli-intro/" title="There is more to Tower than the Web UI" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/3-awx-cli-intro/">
+          There is more to Tower than the Web UI
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/4-awx-cli-exercises/" title="Creating Tower Objects Using `awx`" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/4-awx-cli-exercises/">
+          Creating Tower Objects Using `awx`
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/5-tower-cluster-jobs/" title="Run a Job in a Cluster" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/5-tower-cluster-jobs/">
+          Run a Job in a Cluster
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/6-instance-groups/" title="Tower Instance Groups" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/6-instance-groups/">
+          Tower Instance Groups
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/7-parallel-jobs/" title="Parallel Jobs" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/7-parallel-jobs/">
+          Parallel Jobs
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/8-isolated-nodes/" title="Isolated Nodes" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/8-isolated-nodes/">
+          Isolated Nodes
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/9-advanced-inventories/" title="Advanced Inventories" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/9-advanced-inventories/">
+          Advanced Inventories
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/10-structured-content/" title="Well Structured Content Repositories" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/10-structured-content/">
+          Well Structured Content Repositories
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/11-rest-api/" title="Discovering the Tower API" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/11-rest-api/">
+          Discovering the Tower API
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/" title="Ansible Collections" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/">
+          Ansible Collections
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/1-introduction/" title="Introduction" class="dd-item
+        parent
+        active
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/1-introduction/">
+          Introduction
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/2-using-collections-from-playbooks/" title="Collections from Playbook" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/2-using-collections-from-playbooks/">
+          Collections from Playbook
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/3-using-collections-from-roles/" title="Collections from Roles" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/3-using-collections-from-roles/">
+          Collections from Roles
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/4-using-collections-from-tower/" title="Collections in Tower" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/4-using-collections-from-tower/">
+          Collections in Tower
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/5-creating-collections/" title="Creating Collections" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/5-creating-collections/">
+          Creating Collections
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/6-automation-hub-and-galaxy/" title="Use Automation Hub" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/6-automation-hub-and-galaxy/">
+          Use Automation Hub
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/6-automation-hub-and-galaxy/screenshots/" title="" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/6-automation-hub-and-galaxy/screenshots/">
+          
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vscode-intro/" title="Visual Studio Code - Introduction" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/vscode-intro/">
+          Visual Studio Code - Introduction
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://lj020326.github.io/"><i class='fas fa-home'></i> Homepage</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p></p>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://lj020326.github.io/'></a> > <a href='https://lj020326.github.io/ansible-collections/'>Ansible Collections</a> > Introduction
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#your-lab-environment">Your Lab Environment</a></li>
+    <li><a href="#accessing-your-lab-environment">Accessing your Lab Environment</a></li>
+    <li><a href="#what-are-collections-and-why-should-i-care">What are Collections and why should I care?</a></li>
+    <li><a href="#fully-qualified-collection-name">Fully Qualified Collection Name</a></li>
+    <li><a href="#understand-collections-lookup">Understand Collections Lookup</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Introduction
+            </h1>
+          
+
+        
+
+
+
+	<p>This chapter will introduce you to your lab environment and introduce you to the importance of Ansible Collections, what they are and where existing collections can be found and consumed.</p>
+<h2 id="your-lab-environment">Your Lab Environment</h2>
+<p>In this lab you work in a pre-configured lab environment. You will have access to the following hosts:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>URL for External Access (if applicable)</th>
+<th>Hostname Internal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ansible Tower</td>
+<td>student&lt;N&gt;.&lt;LABID&gt;.open.redhat.com</td>
+<td>ansible-1</td>
+</tr>
+<tr>
+<td>Visual Code Web UI</td>
+<td>student&lt;N&gt;-code.&lt;LABID&gt;.open.redhat.com</td>
+<td></td>
+</tr>
+<tr>
+<td>Managed RHEL8 Host 1</td>
+<td></td>
+<td>node1</td>
+</tr>
+<tr>
+<td>Managed RHEL8 Host 2</td>
+<td></td>
+<td>node2</td>
+</tr>
+<tr>
+<td>Managed RHEL8 Host 3</td>
+<td></td>
+<td>node3</td>
+</tr>
+</tbody>
+</table>
+
+<div class="notices warning" ><p>The lab environments in this session have a <strong>&lt;LABID&gt;</strong> and are separated by numbered <strong>student&lt;N&gt;</strong> accounts. Follow the instructions given by the lab facilitators to receive the values for <strong>student&lt;N&gt;</strong> and <strong>&lt;LABID&gt;</strong>!</p>
+</div>
+
+
+<div class="notices tip" ><p>On the lab landing page you&rsquo;ll find the URLs you need to access complete with student number and lab ID already filled in.</p>
+</div>
+
+<h2 id="accessing-your-lab-environment">Accessing your Lab Environment</h2>
+<p>Your main points of contact with the lab is <strong>code-server</strong>, providing a VSCode-experience in your browser.</p>
+<p>Now open code-server using the <strong>VS Code access</strong> link from the lab landing page or use this link in your browser by replacing <strong>&lt;N&gt;</strong> by your student number and the <strong>&lt;LABID&gt;</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">     https://student&lt;N&gt;-code.&lt;LABID&gt;.open.redhat.com
+</code></pre></div><p><img src="../../images/vscode-pwd.png" alt="code-server login"></p>
+<p>Use the password <strong>provided on the lab landing page</strong> to login into the code-server web UI, you can close the <strong>Welcome</strong> tab. Now open a new terminal by heading to the menu item <strong>Terminal</strong> at the top of the page and select <strong>New Terminal</strong>. A new section will appear in the lower half of the screen and you will be greeted with a prompt:</p>
+<p><img src="../../images/vscode-terminal.png" alt="code-server terminal"></p>
+<p>If unsure how to use code-server, read the <a href="../../vscode-intro/">Visual Studio Code Server introduction</a>, to learn more about how to create and edit files, and to work with the Terminal.</p>
+<p>Congrats, you now have a shell terminal on your Ansible control node. From here you run commands or access the other hosts in your lab environment if the lab task requires it.</p>
+<p>Now in the terminal become root:</p>
+<pre><code>[student@ansible-1 ~]$ sudo -i
+</code></pre>
+<p>Most prerequisite tasks have already been done for you:</p>
+<ul>
+<li>
+<p>Ansible software is installed</p>
+</li>
+<li>
+<p><code>sudo</code> has been configured on the managed hosts to run commands that require root privileges.</p>
+</li>
+</ul>
+<p>Check Ansible has been installed correctly (your actual Ansible version might differ):</p>
+<pre><code>[ansible-1 ~]# ansible --version
+ansible 2.9.13
+[...]
+</code></pre>
+<p>Log out of the root account again:</p>
+<pre><code>[ansible-1 ~]# exit
+logout
+</code></pre>
+
+<div class="notices warning" ><p>In all subsequent exercises you should work as the student&lt;N&gt; user on the control node if not explicitly told differently.</p>
+</div>
+
+<h2 id="what-are-collections-and-why-should-i-care">What are Collections and why should I care?</h2>
+<p>Ansible Collections are a new distribution format for Ansible content that can include playbooks, roles, modules, and plugins. Modules are moved from the core Ansible repository into collections living in repositories outside of the core repository. This change in the content delivery process will allow Ansible to keep up the tremendous success and, coming with it, growth in content.</p>
+<ul>
+<li>Before collections, module creators had to wait for their modules to be included in an upcoming Ansible release or had to add them to roles, which made consumption and management more difficult.</li>
+<li>By distributing modules packaged in Ansible Content Collections along with roles, documentation and even playbooks, content creators are now able to move as fast or conservative as the technology they manage demands.</li>
+</ul>
+<p><strong>Example</strong>: A public cloud provider could make new functionality of an existing service available, that could be rolled out along with the ability to automate the new functionality with Ansible. With Ansible Collections the author doesn&rsquo;t have to wait for the next Ansible release and can instead roll out the new content independently. Prior to Ansible Collections the author had to wait for the next Ansible release.</p>
+<p>For Ansible users, the benefit is that updated content can continuously be made available. Managing content this way also becomes easier as modules, plugins, roles, and docs that belong together are packaged together and versioned.</p>
+<h2 id="fully-qualified-collection-name">Fully Qualified Collection Name</h2>
+<p>Ansible Collection names are a combination of two components. The first part is the name of the author who wrote and maintains the Ansible Collection. The second part is the name of the Ansible Collection. This allows one author to have multiple Collections. It also allows multiple authors to have Ansible Collections with the same name.</p>
+<pre><code>&lt;author&gt;.&lt;collection&gt;
+</code></pre>
+<p>These are examples for Ansible Collection names:</p>
+<ul>
+<li>
+<p>ansible.posix</p>
+</li>
+<li>
+<p>geerlingguy.k8s</p>
+</li>
+<li>
+<p>theforeman.foreman</p>
+</li>
+</ul>
+<p>To identify a specific module in an Ansible Collection, we add the name of it as the third part:</p>
+<pre><code>&lt;author&gt;.&lt;collection&gt;.&lt;module&gt;
+</code></pre>
+<p>Valid examples for a fully qualified Ansible Collection Name:</p>
+<ul>
+<li>
+<p>ansible.posix.selinux</p>
+</li>
+<li>
+<p>geerlingguy.k8s.kubernetes</p>
+</li>
+<li>
+<p>theforeman.foreman.user</p>
+</li>
+</ul>
+<h2 id="understand-collections-lookup">Understand Collections Lookup</h2>
+<p>Ansible Collections use a simple method to define collection namespaces. If your playbook loads collections using the <code>collections</code> key and one or more roles, then the roles will not inherit the collections set by the playbook.</p>
+<p>This leads to the main topic of this exercise: roles have an independent collection loading method based on the role&rsquo;s metadata. To control collections search for the tasks inside the role, users can choose between two approaches:</p>
+<ul>
+<li>
+<p><strong>Approach 1</strong>: Pass a list of collections in the <code>collections</code> field inside the <code>meta/main.yml</code> file within the role. This will ensure that the collections list searched by the role will have higher priority than the collections list in the playbook. Ansible will use the collections list defined inside the role even if the playbook that calls the role defines different collections in a separate <code>collections</code> keyword entry.</p>
+<pre tabindex="0"><code># myrole/meta/main.yml
+collections:
+  - my_namespace.first_collection
+  - my_namespace.second_collection
+  - other_namespace.other_collection
+</code></pre></li>
+<li>
+<p><strong>Approach 2</strong>: Use the collection fully qualified collection name (FQCN) directly from a task in the role. In this way the collection will always be called with its unique FQCN, and override any other lookup in the playbook</p>
+<pre tabindex="0"><code>- name: Create an EC2 instance using collection by FQCN
+  amazon.aws.ec2:
+    key_name: mykey
+    instance_type: t2.micro
+    image: ami-123456
+    wait: yes
+    group: webserver
+    count: 3
+    vpc_subnet_id: subnet-29e63245
+    assign_public_ip: yes
+</code></pre></li>
+</ul>
+<p>Roles defined <strong>within</strong> a collection always implicitly search their own collection first, so there is no need to use the <code>collections</code> keyword in the role metadata to access modules, plugins, or other roles.</p>
+<p>In the following chapters of this lab you will learn how collections work and see different examples to see how it works.</p>
+
+<div class="notices tip" ><p>Since the Ansible Collection lookup could can deliver unexpected results, it is best practice to always use the fully qualified collection name.</p>
+</div>
+
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="https://lj020326.github.io/ansible-collections/" title="Ansible Collections"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="https://lj020326.github.io/ansible-collections/2-using-collections-from-playbooks/" title="Collections from Playbook" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="https://lj020326.github.io/js/clipboard.min.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/perfect-scrollbar.min.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/perfect-scrollbar.jquery.min.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/jquery.sticky.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/featherlight.min.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/highlight.pack.js?1647023136"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://lj020326.github.io/js/modernizr.custom-3.6.0.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/learn.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/hugo-learn.js?1647023136"></script>
+    
+        
+            <script src="https://lj020326.github.io/mermaid/mermaid.js?1647023136"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>

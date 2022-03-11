@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="description" content="Ansible and Ansible Tower Labs">
+<meta name="author" content="Christian, Eric, Götz, Ismail, Joachim">
+
+    <link rel="icon" href="https://lj020326.github.io/images/favicon.png" type="image/png">
+
+    <title>Collections in Tower :: Ansible Labs for AnsibleFest</title>
+
+    
+    <link href="https://lj020326.github.io/css/nucleus.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/fontawesome-all.min.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/hybrid.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/featherlight.min.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/perfect-scrollbar.min.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/auto-complete.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/atom-one-dark-reasonable.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/theme.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/tabs.css?1647023136" rel="stylesheet">
+    <link href="https://lj020326.github.io/css/hugo-theme.css?1647023136" rel="stylesheet">
+    
+    <link href="https://lj020326.github.io/css/theme-red.css?1647023136" rel="stylesheet">
+    
+    
+
+    <script src="https://lj020326.github.io/js/jquery-3.3.1.min.js?1647023136"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="https://lj020326.github.io/ansible-collections/4-using-collections-from-tower/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://lj020326.github.io/">
+  <img src="https://lj020326.github.io/images/email_ansiblefest-2020.png">
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="https://lj020326.github.io/js/lunr.min.js?1647023136"></script>
+<script type="text/javascript" src="https://lj020326.github.io/js/auto-complete.js?1647023136"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/lj020326.github.io\/";
+    
+</script>
+<script type="text/javascript" src="https://lj020326.github.io/js/search.js?1647023136"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='https://lj020326.github.io/'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/" title="Ansible Getting Started" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/">
+          Ansible Getting Started
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/1-setup/" title="Check the Prerequisites" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/1-setup/">
+          Check the Prerequisites
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/2-adhoc/" title="Running ad hoc commands" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/2-adhoc/">
+          Running ad hoc commands
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/3-playbook/" title="Writing Your First Playbook" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/3-playbook/">
+          Writing Your First Playbook
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/4-variables/" title="Using Variables" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/4-variables/">
+          Using Variables
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/5-handlers/" title="Conditionals, Handlers and Loops" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/5-handlers/">
+          Conditionals, Handlers and Loops
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/6-templates/" title="Templates" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/6-templates/">
+          Templates
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-getting-started/7-bonus/" title="Bonus Labs" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-getting-started/7-bonus/">
+          Bonus Labs
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/" title="Ansible Tower Getting Started" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/">
+          Ansible Tower Getting Started
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/1-intro/" title="Introduction to Tower" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/1-intro/">
+          Introduction to Tower
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/2-cred/" title="Inventories, credentials and ad hoc commands" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/2-cred/">
+          Inventories, credentials and ad hoc commands
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/3-projects/" title="Projects &amp; job templates" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/3-projects/">
+          Projects &amp; job templates
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/4-surveys/" title="Surveys" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/4-surveys/">
+          Surveys
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/5-rbac/" title="Role-based access control" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/5-rbac/">
+          Role-based access control
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/6-workflows/" title="Workflows" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/6-workflows/">
+          Workflows
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-getting-started/7-wrap/" title="Wrap up" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-getting-started/7-wrap/">
+          Wrap up
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/" title="Ansible Tower Advanced" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/">
+          Ansible Tower Advanced
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/1-intro/" title="Ansible Tower Advanced" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/1-intro/">
+          Ansible Tower Advanced
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/2-clustering/" title="Introduction to Ansible Tower Clustering" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/2-clustering/">
+          Introduction to Ansible Tower Clustering
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/3-awx-cli-intro/" title="There is more to Tower than the Web UI" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/3-awx-cli-intro/">
+          There is more to Tower than the Web UI
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/4-awx-cli-exercises/" title="Creating Tower Objects Using `awx`" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/4-awx-cli-exercises/">
+          Creating Tower Objects Using `awx`
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/5-tower-cluster-jobs/" title="Run a Job in a Cluster" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/5-tower-cluster-jobs/">
+          Run a Job in a Cluster
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/6-instance-groups/" title="Tower Instance Groups" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/6-instance-groups/">
+          Tower Instance Groups
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/7-parallel-jobs/" title="Parallel Jobs" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/7-parallel-jobs/">
+          Parallel Jobs
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/8-isolated-nodes/" title="Isolated Nodes" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/8-isolated-nodes/">
+          Isolated Nodes
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/9-advanced-inventories/" title="Advanced Inventories" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/9-advanced-inventories/">
+          Advanced Inventories
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/10-structured-content/" title="Well Structured Content Repositories" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/10-structured-content/">
+          Well Structured Content Repositories
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-tower-advanced/11-rest-api/" title="Discovering the Tower API" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-tower-advanced/11-rest-api/">
+          Discovering the Tower API
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/" title="Ansible Collections" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/">
+          Ansible Collections
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/1-introduction/" title="Introduction" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/1-introduction/">
+          Introduction
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/2-using-collections-from-playbooks/" title="Collections from Playbook" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/2-using-collections-from-playbooks/">
+          Collections from Playbook
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/3-using-collections-from-roles/" title="Collections from Roles" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/3-using-collections-from-roles/">
+          Collections from Roles
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/4-using-collections-from-tower/" title="Collections in Tower" class="dd-item
+        parent
+        active
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/4-using-collections-from-tower/">
+          Collections in Tower
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/5-creating-collections/" title="Creating Collections" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/5-creating-collections/">
+          Creating Collections
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/6-automation-hub-and-galaxy/" title="Use Automation Hub" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/6-automation-hub-and-galaxy/">
+          Use Automation Hub
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/ansible-collections/6-automation-hub-and-galaxy/screenshots/" title="" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/ansible-collections/6-automation-hub-and-galaxy/screenshots/">
+          
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vscode-intro/" title="Visual Studio Code - Introduction" class="dd-item
+        
+        
+        
+        ">
+      <a href="https://lj020326.github.io/vscode-intro/">
+          Visual Studio Code - Introduction
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://lj020326.github.io/"><i class='fas fa-home'></i> Homepage</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p></p>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='https://lj020326.github.io/'></a> > <a href='https://lj020326.github.io/ansible-collections/'>Ansible Collections</a> > Collections in Tower
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#set-up-a-local-git-server">Set up a Local Git Server</a></li>
+    <li><a href="#create-content-for-the-ansible-tower-project">Create Content for the Ansible Tower Project</a></li>
+    <li><a href="#create-the-project-and-job-template">Create the Project and Job Template</a></li>
+    <li><a href="#inventory-and-machine-credentials">Inventory and Machine Credentials</a></li>
+    <li><a href="#configure-scm-credentials">Configure SCM Credentials</a></li>
+    <li><a href="#set-up-the-project">Set up the Project</a></li>
+    <li><a href="#create-the-job-template-and-run-it">Create the Job Template and run it</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Collections in Tower
+            </h1>
+          
+
+        
+
+
+
+	<p>Red Hat Ansible Tower supports Ansible Collections starting with version 3.5 - earlier version will not automatically install and configure them for you. To make sure Ansible Collections are recognized by Red Hat Ansible Tower a requirements file is needed and has to be stored in the proper directory.</p>
+<p>Ansible Galaxy is already configured by default, however if you want your Red Hat Ansible Tower to prefer and fetch content from the Red Hat Automation Hub, additional configuration changes are required. They are addressed in a the chapter <a href="../6-automation-hub-and-galaxy/">Use Automation Hub</a> in this lab.</p>
+<p>In this exercise you will learn how to define an Ansible Collection as a requirement in a format recognized by Red Hat Ansible Tower. We&rsquo;ll be using the <code>ansible.posix</code> collection again from Ansible Galaxy. As you probably know for Ansible Tower to access the needed bits and pieces a version control system is needed. For the sake of keeping this lab setup easy, we&rsquo;ll set up a local Git server for this.</p>
+<h2 id="set-up-a-local-git-server">Set up a Local Git Server</h2>
+<p>So, let’s get started. We have to create a simplistic Git server on our control host. Typically you would work with GitHub, GitLab, Gitea, or any other Git server.</p>
+
+<div class="notices warning" ><p>Make sure to run these steps from your users home directory!</p>
+</div>
+
+<pre tabindex="0"><code>[student@ansible-1 ~]$ wget https://raw.githubusercontent.com/lj020326/ansible-labs/master/content/ansible-collections/4-using-collections-from-tower/simple_git.yml
+[student@ansible-1 ~]$ ansible-playbook simple_git.yml -e &quot;git_project=tower_collections&quot;
+</code></pre><p>Next we will clone the repository on the control host. To enable you to work with git on the command line the SSH key for user <em>ec2-user</em> was already added to the Git user <em>git</em>. Next, clone the repository on the control machine:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>student@ansible-1 ~<span style="color:#f92672">]</span>$ git clone git@ansible-1:projects/tower_collections
+<span style="color:#75715e"># Message &#34;warning: You appear to have cloned an empty repository.&#34; is OK and can be ignored</span>
+<span style="color:#f92672">[</span>student@ansible-1 ~<span style="color:#f92672">]</span>$ git config --global push.default simple
+<span style="color:#f92672">[</span>student@ansible-1 ~<span style="color:#f92672">]</span>$ git config --global user.name <span style="color:#e6db74">&#34;Your Name&#34;</span>
+<span style="color:#f92672">[</span>student@ansible-1 ~<span style="color:#f92672">]</span>$ git config --global user.email you@example.com
+<span style="color:#f92672">[</span>student@ansible-1 ~<span style="color:#f92672">]</span>$ cd tower_collections/
+</code></pre></div>
+<div class="notices tip" ><p>The repository is currently empty. The three config commands are just there to avoid warnings from Git.</p>
+</div>
+
+<p>You now have a local Git server that can be accessed via SSH from Tower.</p>
+<h2 id="create-content-for-the-ansible-tower-project">Create Content for the Ansible Tower Project</h2>
+<p>Red Hat Ansible Tower can download and install Ansible Collections automatically before executing a Job Template. If a <code>collections/requirements.yml</code> exists in your project, it will be parsed and the Ansible Collections specified in this file will be automatically installed.</p>
+
+<div class="notices tip" ><p>Starting with Red Hat Ansible Tower 3.6 the working directory for the Job Template is in <code>/tmp</code>. Since the Ansible Collection is downloaded into this directory before the Job Template is executed, you will not find temporary files of your Ansible Collection in <code>/var/lib/awx/projects/</code>.</p>
+</div>
+
+<p>The format of the <code>requirements.yml</code> for Ansible Collections is very similar to the one for roles, however it is very important to store in the folder <code>collections</code>.</p>
+<p>Let&rsquo;s create the files needed to see how you can use collections in Ansible Tower. This is of course just a simple example. First create the <code>collections</code> directory in your Git repo (you should have changed into <code>tower_collections</code> already above):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>student@ansible-1 tower_collections<span style="color:#f92672">]</span>$ mkdir collections
+<span style="color:#f92672">[</span>student@ansible-1 tower_collections<span style="color:#f92672">]</span>$ cd collections
+</code></pre></div><p>Then create the <code>requirements.yml</code> file listing the collection(s) you need:</p>
+<pre tabindex="0"><code>---
+collections:
+- ansible.posix
+</code></pre><p>As this is a simple example we&rsquo;ll just add a Playbook to the Git repo now. Normally you would have a lot more content in your project repository. So what could we do as an example instead of using the <code>ansible.posix</code> collection again? Let&rsquo;s create a Playbook to configure an <code>at</code> job:</p>
+<pre tabindex="0"><code>---
+- name: Install AT Job
+  hosts: all
+
+  tasks:
+  - name: at command needs to be installed
+    yum:
+      name: at
+      state: present
+
+  - name: Schedule a command to execute in 20 minutes as root
+    ansible.posix.at:
+      command: ls -d / &gt;/dev/null
+      count: 20
+      units: minutes
+</code></pre><p>Save the file as <code>configure_at_job.yml</code>.</p>
+
+<div class="notices tip" ><p>Note the usage of the Fully Qualified Collection Name in the Playbook</p>
+</div>
+
+<p>Make sure everything looks fine:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>student@ansible-1 tower_collections<span style="color:#f92672">]</span>$ tree
+.
+├── collections
+│   └── requirements.yml
+└── configure_at_job.yml
+</code></pre></div><p>So far you created the code only locally on the control host, now you are ready to add it to the repository and push it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>student@ansible-1 tower_collections<span style="color:#f92672">]</span>$ git add collections configure_at_job.yml
+<span style="color:#f92672">[</span>student@ansible-1 tower_collections<span style="color:#f92672">]</span>$ git commit -m <span style="color:#e6db74">&#34;Adding requirements.yml and playbook&#34;</span>
+<span style="color:#f92672">[</span>student@ansible-1 tower_collections<span style="color:#f92672">]</span>$ git push
+</code></pre></div><h2 id="create-the-project-and-job-template">Create the Project and Job Template</h2>
+<p>Now it&rsquo;s time to access your Ansible Tower web UI if you haven&rsquo;t done so out of curiosity already. Point your browser to the URL you were given on the lab landing page, similar to <code>https://student&lt;N&gt;.&lt;LABID&gt;.open.redhat.com</code> (replace <code>&lt;N&gt;</code> with your student number and <code>&lt;LABID&gt;</code> with the ID of this lab) and log in as <code>admin</code>. You can find the password again on the lab landing page.</p>
+<p>To run your new Playbook in Ansible Tower you have to configure a number of objects:</p>
+<ul>
+<li>An <strong>Inventory</strong> with the managed hosts</li>
+<li><strong>Machine Credentials</strong> to access the managed hosts</li>
+<li>Git <strong>Credentials</strong> to access your Git repository via SSH</li>
+<li>The Git repo as <strong>Project</strong></li>
+<li>A <strong>Job Template</strong> to run the Playbook</li>
+</ul>
+<p>We&rsquo;ll be a bit verbose for students new to Ansible Tower. If you are an Ansible Tower old-hand, just skip through and finish the configuration steps shown.</p>
+<h2 id="inventory-and-machine-credentials">Inventory and Machine Credentials</h2>
+<p>The inventory <strong>Workshop Inventory</strong> and the machine credentials <strong>Workshop Credentials</strong> have already been created in your lab environment.</p>
+<h2 id="configure-scm-credentials">Configure SCM Credentials</h2>
+<p>Now we will configure the credentials to access our the Git repo on your control host via SSH. In the <strong>RESOURCES</strong> menu choose <strong>Credentials</strong>. Now:</p>
+<p>Click the <img src="../../images/green_plus.png?classes=inline" alt="plus"> button to add new credentials</p>
+<ul>
+<li><strong>NAME:</strong> Git Credentials</li>
+<li><strong>ORGANIZATION:</strong> Click on the magnifying glass, pick <strong>Default</strong> and click <strong>SELECT</strong></li>
+<li><strong>CREDENTIAL TYPE:</strong> Click on the magnifying glass, pick <strong>Source Control</strong> as type and click <strong>SELECT</strong> (you will have to use the search or cycle through the types to find it).</li>
+<li><strong>USERNAME:</strong> ec2-user</li>
+</ul>
+<p>As we are using SSH key authentication, you have to provide an SSH private key that can be used to access the host with the Git repo as the user <code>git</code>.</p>
+
+<div class="notices tip" ><p>The Playbook we used to configure Git added the SSH private key to the <code>authorized_keys</code> of user <code>git</code></p>
+</div>
+
+<p>Bring up your code-server terminal on Tower and use <code>cat</code> to get the SSH private key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>ansible-1 ~<span style="color:#f92672">]</span>$ cat ~/.ssh/aws-private.pem
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA2nnL3m5sKvoSy37OZ8DQCTjTIPVmCJt/M02KgDt53+baYAFu1TIkC3Yk+HK1
+<span style="color:#f92672">[</span>...<span style="color:#f92672">]</span>
+-----END RSA PRIVATE KEY-----
+</code></pre></div><ul>
+<li>
+<p>Copy the <strong>complete private key</strong> (including &ldquo;BEGIN&rdquo; and &ldquo;END&rdquo; lines) from the output and paste it into the <strong>SSH PRIVATE KEY</strong> field in the web UI.</p>
+</li>
+<li>
+<p>Click <strong>SAVE</strong></p>
+</li>
+</ul>
+<p>You have now setup credentials to access the Git repo on your control host.</p>
+<h2 id="set-up-the-project">Set up the Project</h2>
+<p>It&rsquo;s time to set up the Tower Project pointing to your Git repository holding your Playbook and collections requirements file.</p>
+<ul>
+<li>Go to <strong>RESOURCES → Projects</strong> in the side menu view click the <img src="../../images/green_plus.png?classes=inline" alt="plus"> button. Fill in the form:</li>
+<li><strong>NAME:</strong> Collections Repo</li>
+<li><strong>ORGANIZATION:</strong> Default</li>
+<li><strong>SCM TYPE:</strong> Git</li>
+</ul>
+<p>Now you need the URL to access the repo. You could get the URL in Github as <strong>Clone URL</strong>. Enter the URL into the Project configuration:</p>
+<ul>
+<li><strong>SCM URL:</strong> git@ansible-1:projects/tower_collections</li>
+<li><strong>SCM CREDENTIAL:</strong> Click the magnifying glass and choose <code>Git Credentials</code>, click <strong>SELECT</strong></li>
+<li><strong>SCM UPDATE OPTIONS:</strong> Tick the first three boxes to always get a fresh copy of the repository and to update the repository when launching a job.</li>
+<li>Click <strong>SAVE</strong></li>
+</ul>
+<p>The new Project will be synced automatically after creation. If everything went fine, you should see a green icon to the left of the new Project.</p>
+<h2 id="create-the-job-template-and-run-it">Create the Job Template and run it</h2>
+<p>The last step is to create a Job Template to run the Playbook. Go to the <strong>Templates</strong> view, click the <img src="../../images/green_plus.png?classes=inline" alt="plus"> button and choose <strong>Job Template</strong>.</p>
+<ul>
+<li>
+<p><strong>NAME:</strong> Install AT Job</p>
+</li>
+<li>
+<p><strong>JOB TYPE:</strong> Run</p>
+</li>
+<li>
+<p><strong>INVENTORY:</strong> Workshop Inventory</p>
+</li>
+<li>
+<p><strong>PROJECT:</strong> Collections Repo</p>
+</li>
+<li>
+<p><strong>PLAYBOOK:</strong> <code>configure_at_job.yml</code></p>
+</li>
+<li>
+<p><strong>CREDENTIAL:</strong> Workshop Credentials</p>
+</li>
+<li>
+<p>We need to run the tasks as root so check <strong>Enable privilege escalation</strong></p>
+</li>
+<li>
+<p>Click <strong>SAVE</strong></p>
+</li>
+</ul>
+<p>You can start the job by directly clicking the blue <strong>LAUNCH</strong> button, or by clicking on the rocket in the Job Templates overview. After launching the Job Template, you are automatically brought to the job overview where you can follow the playbook execution in real time.</p>
+<p>After the Job has finished bring up your VSCode terminal, as the job was run on all three managed nodes and the control/ Ansible Tower node, you can simply check the result here. Run <code>sudo at -l</code> and you should see your job was scheduled successfully.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Since Red Hat Ansible Tower does only check for updates in the repository in which you stored your Playbook, it might not do a refresh if there was a change in the Ansible Collection used by your Playbook. This happens particularly if you also combine Roles and Collections.</p>
+<p>In this case you should check the option <strong>Delete on Update</strong> which will delete the entire local directory during a refresh.</p>
+<p>If there is a problem while parsing your <code>requirements.yml</code> it&rsquo;s worth testing it with the <code>ansible-galaxy</code> command. As a reminder, Red Hat Ansible Tower basically also just runs the command for you with the appropriate parameters, so testing this works manually makes a lot of sense.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-galaxy collection install -r collections/requirements.yml -f
+</code></pre></div>
+<div class="notices tip" ><p>The <code>-f</code> switch will forces a fresh installation of the specified Ansible Collections, otherwise <code>ansible-galaxy</code> will only install it, if it wasn&rsquo;t already installed. You can also use the <code>--force-with-deps</code> switch to make sure Ansible Collections which have dependencies to others are refreshed as well.</p>
+</div>
+
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="https://lj020326.github.io/ansible-collections/3-using-collections-from-roles/" title="Collections from Roles"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="https://lj020326.github.io/ansible-collections/5-creating-collections/" title="Creating Collections" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="https://lj020326.github.io/js/clipboard.min.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/perfect-scrollbar.min.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/perfect-scrollbar.jquery.min.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/jquery.sticky.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/featherlight.min.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/highlight.pack.js?1647023136"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://lj020326.github.io/js/modernizr.custom-3.6.0.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/learn.js?1647023136"></script>
+    <script src="https://lj020326.github.io/js/hugo-learn.js?1647023136"></script>
+    
+        
+            <script src="https://lj020326.github.io/mermaid/mermaid.js?1647023136"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
